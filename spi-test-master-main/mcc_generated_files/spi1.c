@@ -75,7 +75,7 @@ static const spi1_configuration_t spi1_configuration[] = {
 
 void SPI1_Initialize(void)
 {
-    //EN disabled; LSBF MSb first; MST bus slave; BMODE last byte; 
+    //EN disabled; LSBF MSb first; MST bus; BMODE last byte; 
     SPI1CON0 = 0x02;    //0b00000010
     //SMP Middle; CKE Active to idle; CKP Idle:Low, Active:High; FST disabled; SSP active low; SDIP active high; SDOP active high; 
     SPI1CON1 = 0x04;    //0100 0100 
