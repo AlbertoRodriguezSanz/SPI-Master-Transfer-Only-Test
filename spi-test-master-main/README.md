@@ -1,7 +1,6 @@
 ### SPI Master Device
 
-This device's firmware is programmed through Foundation Service libraries found in the Microchip Code Configurator (MCC), which generates all of the required functions for initialization and operation. Within the firmware there are 3 test variations for which different number of bytes and methods are implemented.
-- SPI_Master_test_2: Four bytes are transfered taking into account the system's clock frequency to time the transfers. 
+This device's firmware is programmed through Foundation Service libraries found in the Microchip Code Configurator (MCC), which generates all of the required functions for initialization and operation. Within the firmware there are 3 test variations for which different number of bytes and methods are implemented. 
 
 ## Device configuration
 
