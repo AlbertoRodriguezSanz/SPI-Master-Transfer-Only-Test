@@ -1,9 +1,5 @@
 # SPI-Master-Transmit-Only-Test
-Firmware for the various tests performed with the PIC18F26K83 microcontroller for the SPI module working as the master of a bus where only this device transmits data
-
-# SPI-Master-Full-Duplex-Test
-
-PIC firmware for performing a communication test between two PIC18F26K83 microcontrollers through the SPI communication protocol. The goal for this test is to exchange a total of 4 bytes uninterrupted, replicating the communication with the AksIM2 absolute encoder. If the received message matches an expected value the LED will be turned on. There are two implementations for the master device transfers.
+Firmware for the various tests performed with the PIC18F26K83 microcontroller for the SPI module working as the master of a bus where only this device transmits data. Within this firmware there are a couple of test variations for sending a different number of bytes through different ways, after which a LED will be turned on.
 
 ## Setup
 A breadboard with two PIC18F26K83 microcontrollers connected through two MCP2561 CAN transceivers is used as a testbench. 
