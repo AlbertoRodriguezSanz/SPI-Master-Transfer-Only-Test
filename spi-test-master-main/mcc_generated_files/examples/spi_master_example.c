@@ -86,27 +86,29 @@ uint8_t SPI_Master_test(void)
 		return 0; 
     
     
-    drive_slave_select_low();
-    
-    // Example for sending two bytes as shown in Figure
-    // SPI1TXB = 0xA9;
-    // SPI1TXB = 0x00;
+    	drive_slave_select_low();
+	    
+    	// Example for sending two bytes as shown in Figure
+    	// SPI1TXB = 0xA9;
+    	// SPI1TXB = 0x00;
+	// Making use of the WriteByte function, two bytes can be sent by adding a second transfer buffer load 
 
-    // Example for sending four bytes with a delay as shown in Figure 
-    //SPI1_WriteBlock(buffer, sizeof(buffer));
+    	// Example for sending four bytes with a delay as shown in Figure 
+    	// SPI1_WriteBlock(buffer, sizeof(buffer));	
+	// This function calls the WriteByte function, so modifying it will alter the transfer by sending all the bytes without breaks
     
-    // Example for sending four consecutive bytes as shown in Figure 
-    SPI1TXB = 0xAA;  
-    SPI1TXB = 0x02;                            
-    __delay_us(2.5);
-    SPI1TXB = 0xAA; 
-    __delay_us(2.5);
-    SPI1TXB = 0x02;                                   
+    	// Example for sending four consecutive bytes as shown in Figure 
+    	SPI1TXB = 0xAA;  
+    	SPI1TXB = 0x02;                            
+    	__delay_us(2.5);
+    	SPI1TXB = 0xAA; 
+    	__delay_us(2.5);
+    	SPI1TXB = 0x02;                                   
 
-    drive_slave_select_high();
+    	drive_slave_select_high();
     
-    SPI1_Close();
-        
+    	SPI1_Close();
+	
     
 	// If we get here, everything was OK
 	return 1;
