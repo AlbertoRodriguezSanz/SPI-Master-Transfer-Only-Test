@@ -15,7 +15,8 @@ For this test the PICkit4 in-circuit debugger/programmer will be used to load th
 
 In the schematic of the breadboard the two connectors represent the PICKIT4 pins required for programming each of the two microcontrollers. 
 
-![protoboard_schematic](https://github.com/AlbertoRodriguezSanz/CAN-Bus-Test/assets/95371514/cc8b1035-44ea-4e5a-bbfc-5b08e4b7b556)
+![spi_can_combined_breadboard_schematic](https://github.com/AlbertoRodriguezSanz/SPI-Master-Transmit-Only-Test/assets/95371514/68131bdd-db41-4513-8ce9-3f52d5cdf47f)
+
 
 ## Device configuration
 
