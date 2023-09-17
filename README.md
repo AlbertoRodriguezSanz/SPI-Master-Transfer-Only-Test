@@ -2,7 +2,7 @@
 Firmware for the various tests performed with the PIC18F26K83 microcontroller for the SPI module working as the master of a bus where only this device transmits data. Within this firmware there are a couple of test variations for sending a different number of bytes through different ways, after which a LED will be turned on.
 
 ## Setup
-A breadboard with two PIC18F26K83 microcontrollers connected through two MCP2561 CAN transceivers is used as a testbench. 
+A breadboard with two PIC18F26K83 microcontrollers, where the microcontroller labelled '1' operates as the master device and the microcontroller labelled '3' operates as the slave device, was used as a test bench.
 
 ![broadboard_can_bus_top_viewjpg](https://github.com/AlbertoRodriguezSanz/CAN-Bus-Test/assets/95371514/c0f4a20e-199d-4b0a-b0b2-8a69f7578277) 
 
@@ -13,15 +13,35 @@ For this test the PICkit4 in-circuit debugger/programmer will be used to load th
 - VDD
 - VSS
 
-The microcontrollers are connected through two MCP2561 CAN transceivers. For such short distances, the use of termination resistors is not required. The two connectors represent the PICKIT4 pins required for programming each of the two microcontrollers. 
+In the schematic of the breadboard the two connectors represent the PICKIT4 pins required for programming each of the two microcontrollers. 
+
 ![protoboard_schematic](https://github.com/AlbertoRodriguezSanz/CAN-Bus-Test/assets/95371514/cc8b1035-44ea-4e5a-bbfc-5b08e4b7b556)
 
-  
+## Device configuration
+
+- Configuration bits (CONFIG1-5H/L registers)
+  - Oscillator source at power-up: High frequency internall oscillator with no clock division applied
+  - Master Clear and Low Voltage Programming: MCLR and LVP are enabled, making the MCLR pin work for as a master clear for programming.
+  - Brown-out Reset: Disabled, device will not reset when voltage drops under a certain threshold.
+  - Watchdog Timer: Disabled, the Windowed Watchdog Timer will not be enabled for this test, to check for timing inaccuracies while executing instructions.
+- Clock Manager (OSCCON1 and OSCFRQ registers)
+  -   Clock Frequency: 16MHz, proceeding from a 64MHz base High-Frequency Oscillator Clock
+- Pin Manager:
+  -  LED pin -> RC2 (output)
+  -  Slave Select -> RA5 (output)
+  -  SPI clock -> RC3 (output)
+  -  SPI Data Out (SDO) -> RC5 (output)
+  -  SPI Data In (SDI) -> RC4 (input)
+
+## SPI module configuration
+
+Unlike previous tests the SPI module is not implemented through the Foundation Service Libraries (FSL) integrated in the MCC. The specifics for each microcontroller are described on the respective README files.
+
 ## Requirements
 
 Install MPLAB X IDE tool for Windows, Linux or MAC from the following link ([download link](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)).
 
-## How to download the firmware to the PIC
+## Operation
 
 Once MPLAB is opened, load the project through *File > Open Project* and then select the file `FSL_SPI_MASTER.mc3`.
 This will open the work environment, where `main.c` is the code file that will be compiled into the PIC. The project properties are accessed through *Production > Set Project Configuration > Customize...*, where the PICkit4 needs to be selected in the *Connected Hardware Tool* menu.
