@@ -72,6 +72,8 @@ void main(void)
 
         // Test for sending four consecutive bytes timing the data transfers
         SPI_Master_test_4();
+
+        LATCbits.LC2 = 1;  // Signals that the test has finished
                 
     }
 }
