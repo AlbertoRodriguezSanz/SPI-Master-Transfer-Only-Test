@@ -58,13 +58,21 @@ void main(void)
     PORTCbits.RC2 = 0; 
     PORTAbits.RA5 = 1; //SS start high (no communication)
     
-    //SPI_Master_test();
-    while (1)
+    while (1)  
     {
+        /*Select one of the available tests without adding any sort of delays, so that the signals can be perceived by the oscilloscope trigger function*/
+        // Test for sending one signle byte through the WriteByte function
+        SPI_Master_test_1();
 
-        SPI_Master_test();
-        
-        
+        // Test for sending two consecutive bytes
+        SPI_Master_test_2();
+
+        // Test for sending four bytes with a delay
+        SPI_Master_test_3();
+
+        // Test for sending four consecutive bytes timing the data transfers
+        SPI_Master_test_4();
+                
     }
 }
 /**
