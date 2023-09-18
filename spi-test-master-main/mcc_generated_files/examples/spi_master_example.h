@@ -29,7 +29,9 @@
 #ifndef _SPI_MASTER_EXAMPLE_H
 #define _SPI_MASTER_EXAMPLE_H
 
-uint8_t SPI_Master_test(void);
-uint8_t SPI_Master_2(void);
+uint8_t SPI_Master_test_1(void);
+uint8_t SPI_Master_test_2(void);
+uint8_t SPI_Master_test_4(void);
+uint8_t SPI_Master_test_3(void);
 
 #endif  /* _SPI_MASTER_EXAMPLE_H */
