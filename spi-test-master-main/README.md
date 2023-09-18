@@ -1,6 +1,6 @@
 ### SPI Master Device
 
-This device's firmware is programmed through Foundation Service libraries found in the Microchip Code Configurator (MCC), which generates all of the required functions for initialization and operation. Within the firmware there are 3 test variations for which different number of bytes and methods are implemented. 
+This device's firmware is programmed through Foundation Service libraries found in the Microchip Code Configurator (MCC), which generates all of the required functions for initialization and operation. Within the firmware there are 3 test variations for which different number of bytes and methods are tested. These are implemented in the `spi_master_example.c` file and called in the `main.c` file.
 
 ## Device configuration
 
@@ -38,5 +38,3 @@ This device's firmware is programmed through Foundation Service libraries found 
 - Clock Settings
   - Clock Source: High Frequency Internall Oscillator
   - Baud Clock: 4MHz
-- Implemented Functions
-  - ExchangeByte, 
