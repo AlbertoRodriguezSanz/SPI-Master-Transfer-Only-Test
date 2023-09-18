@@ -58,3 +58,11 @@ Modify the following options from the default parameters for the PICkit4 program
 Then, follow the next steps:
 * Compile: `Production> Build Main Project`
 * Program: `Production> Make and Program Device Main Project`
+
+Test 1:
+
+![master_transmit_only_test_1_zoom](https://github.com/AlbertoRodriguezSanz/SPI-Master-Transmit-Only-Test/assets/95371514/c2811a2e-bb4e-4627-8841-c6daa2a027fb)
+
+Test 2:
+
+
