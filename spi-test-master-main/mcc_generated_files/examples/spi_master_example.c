@@ -50,6 +50,7 @@ This example works like this:
 #define _XTAL_FREQ 16000000/4
 
  
+static uint8_t txData = 0xFF;
 static uint8_t buffer[4]= "data";
 uint8_t buffer2[4];
 /*
@@ -76,34 +77,43 @@ static void drive_slave_select_high(){
     PORTAbits.RA5 = 1;
 }
 
-uint8_t SPI_Master_test(void)
+// Test for sending one signle byte through the WriteByte function
+uint8_t SPI_Master_test_1(void)
 {
-	// Test driver, assume that the SPI MISO and MOSI pins have been looped back
-	
+	// Test driver, assume that the SPI MISO and MOSI pins have been looped back	
 	if(!spi_master_open(MASTER0))
-		// Not able to open SPI, call fail() or optionally do something 
-		// else waiting for the SPI to become free
-		return 0; 
+	// Not able to open SPI, call fail() or optionally do something 
+	// else waiting for the SPI to become free
+	return 0; 
     
     
     	drive_slave_select_low();
-	    
-    	// Example for sending two bytes 
-    	// SPI1TXB = 0xA9;
-    	// SPI1TXB = 0x00;
-	// Making use of the WriteByte function, two bytes can be sent by adding a second transfer buffer load 
-
-    	// Example for sending four bytes with a delay
-    	// SPI1_WriteBlock(buffer, sizeof(buffer));	
-	// This function calls the WriteByte function, so modifying it will alter the transfer by sending all the bytes without breaks
+	
+    	SP1_WriteByte (txData);
+    	
+    	drive_slave_select_high();
     
-    	// Example for sending four consecutive bytes timing the data transfers
-    	SPI1TXB = 0xAA;  
-    	SPI1TXB = 0x02;                            
-    	__delay_us(2.5);
-    	SPI1TXB = 0xAA; 
-    	__delay_us(2.5);
-    	SPI1TXB = 0x02;                                   
+    	SPI1_Close();
+	
+    
+	// If we get here, everything was OK
+	return 1;
+}
+
+// Test for sending two consecutive bytes
+uint8_t SPI_Master_test_2(void)
+{
+	// Test driver, assume that the SPI MISO and MOSI pins have been looped back	
+	if(!spi_master_open(MASTER0))
+	// Not able to open SPI, call fail() or optionally do something 
+	// else waiting for the SPI to become free
+	return 0; 
+    
+    
+    	drive_slave_select_low();	    
+    	
+	SPI1TXB = 0xA9;
+	SPI1TXB = 0x00;                        
 
     	drive_slave_select_high();
     
@@ -113,6 +123,69 @@ uint8_t SPI_Master_test(void)
 	// If we get here, everything was OK
 	return 1;
 }
+
+// Test for sending four bytes with a delay
+uint8_t SPI_Master_test_3(void)
+{
+	// Test driver, assume that the SPI MISO and MOSI pins have been looped back
+	
+	if(!spi_master_open(MASTER0))
+	// Not able to open SPI, call fail() or optionally do something 
+	// else waiting for the SPI to become free
+	return 0; 
+    
+    
+    	drive_slave_select_low();
+	        	
+    	SPI1_WriteBlock(buffer, sizeof(buffer));	                                
+
+    	drive_slave_select_high();
+    
+    	SPI1_Close();
+	
+    
+	// If we get here, everything was OK
+	return 1;
+}
+
+// Test for sending four consecutive bytes timing the data transfers
+uint8_t SPI_Master_test_4(void)
+{
+	// Test driver, assume that the SPI MISO and MOSI pins have been looped back
+	
+	if(!spi_master_open(MASTER0))
+	// Not able to open SPI, call fail() or optionally do something 
+	// else waiting for the SPI to become free
+	return 0; 
+    
+    
+    	drive_slave_select_low();
+
+    	SPI1TXB = 0xAA;  
+    	SPI1TXB = 0x02;                            
+    	__delay_us(2.5);
+    	SPI1TXB = 0xAA; 
+    	__delay_us(2.5);
+    	SPI1TXB = 0x02;   
+
+	/*
+ 	SPI1TXB = 0xFF; // First byte is sent 
+	SPI1TXB = 0x00; // Second byte is sent
+	__delay_us(3.75);	// A delay is added matching the clock frequency for 15 bits so that the first byte is already exchanged (the second close to ending). A new byte can be loaded into the transfer buffer
+	SPI1TXB = 0xFF; // Third byte is sent
+	__delay_us(3.75);   
+	SPI1TXB = 0x00; // Fourth byte is sent 
+	*/
+ 
+	drive_slave_select_high();
+    
+    	SPI1_Close();
+	
+    
+	// If we get here, everything was OK
+	return 1;
+}
+
 
 
 /**
