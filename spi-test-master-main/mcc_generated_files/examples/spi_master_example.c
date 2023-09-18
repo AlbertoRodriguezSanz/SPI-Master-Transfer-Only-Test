@@ -97,7 +97,7 @@ uint8_t SPI_Master_test(void)
     	// SPI1_WriteBlock(buffer, sizeof(buffer));	
 	// This function calls the WriteByte function, so modifying it will alter the transfer by sending all the bytes without breaks
     
-    	// Example for sending four consecutive bytes 
+    	// Example for sending four consecutive bytes timing the data transfers
     	SPI1TXB = 0xAA;  
     	SPI1TXB = 0x02;                            
     	__delay_us(2.5);
