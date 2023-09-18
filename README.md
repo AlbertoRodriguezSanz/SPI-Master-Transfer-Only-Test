@@ -1,5 +1,5 @@
 # SPI-Master-Transmit-Only-Test
-Firmware for the various tests performed with the PIC18F26K83 microcontroller for the SPI module working as the master of a bus where only this device transmits data. Within this firmware there are a couple of test variations for sending a different number of bytes through different ways, with the objective of observing the generated signals with an oscilloscope.
+Firmware for the various tests performed with the PIC18F26K83 microcontroller for the SPI module working as the master of a bus where only this device transmits data. Within this firmware there are a couple of test variations for sending a different number of bytes through different methods, with the objective of observing the generated signals with an oscilloscope.
 
 ## Setup
 A breadboard with two PIC18F26K83 microcontrollers, where the microcontroller labelled '1' operates as the master device and the microcontroller labelled '3' operates as the slave device, was used as a test bench.
