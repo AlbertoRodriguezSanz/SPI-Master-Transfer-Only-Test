@@ -59,4 +59,10 @@ Then, follow the next steps:
 * Compile: `Production> Build Main Project`
 * Program: `Production> Make and Program Device Main Project`
 
+Example of the generated signals for the 3rd test in which a block of messages is sent through the WriteBlock function.
+![master_transmit_only_test_3_zoom](https://github.com/AlbertoRodriguezSanz/SPI-Master-Transmit-Only-Test/assets/95371514/9c6b07a3-664d-4b79-9b5e-fb4680b6b6a5)
 
+- Channel 1 (Yellow): Slave Select (SS)
+- Channel 2 (Green): SPI Clock (SCK)
+- Channel 3 (Purple): Slave Serial Data Out (SDO, MISO)
+- Channel 4 (Blue): Slave Serial Data In (SDI, MOSI)
