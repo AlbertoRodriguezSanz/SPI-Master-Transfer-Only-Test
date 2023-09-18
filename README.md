@@ -59,6 +59,4 @@ Then, follow the next steps:
 * Compile: `Production> Build Main Project`
 * Program: `Production> Make and Program Device Main Project`
 
-Example of the expected signals for the first test:
 
-![master_transmit_only_test_1_zoom](https://github.com/AlbertoRodriguezSanz/SPI-Master-Transmit-Only-Test/assets/95371514/c2811a2e-bb4e-4627-8841-c6daa2a027fb)
